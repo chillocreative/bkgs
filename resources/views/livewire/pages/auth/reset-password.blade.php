@@ -70,6 +70,11 @@ new #[Layout('layouts.guest')] class extends Component
 }; ?>
 
 <div>
+    <div class="mb-5 text-center">
+        <h2 class="text-xl font-semibold text-gray-800">{{ __('Choose a new password') }}</h2>
+        <p class="text-xs text-gray-500 mt-1">{{ __('Pick something you have not used before.') }}</p>
+    </div>
+
     <form wire:submit="resetPassword">
         <!-- Email Address -->
         <div>

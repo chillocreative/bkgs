@@ -25,6 +25,11 @@ new #[Layout('layouts.guest')] class extends Component
 }; ?>
 
 <div>
+    <div class="mb-5 text-center">
+        <h2 class="text-xl font-semibold text-gray-800">{{ __('Welcome back') }}</h2>
+        <p class="text-xs text-gray-500 mt-1">{{ __('Sign in to view your invoices and pay fees.') }}</p>
+    </div>
+
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -68,4 +73,11 @@ new #[Layout('layouts.guest')] class extends Component
             </x-primary-button>
         </div>
     </form>
+
+    @if (Route::has('register'))
+        <div class="mt-6 pt-4 border-t border-gray-100 text-center text-sm text-gray-600">
+            {{ __("Don't have an account?") }}
+            <a href="{{ route('register') }}" wire:navigate class="ms-1 text-indigo-600 hover:text-indigo-800 font-semibold">{{ __('Register here') }}</a>
+        </div>
+    @endif
 </div>
