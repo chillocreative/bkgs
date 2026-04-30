@@ -1,0 +1,13 @@
+# Internally rewrite every request through /public so Apache serves the
+# Laravel front controller without exposing the project root.
+# Combined with public/.htaccess (which handles the actual route dispatch).
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # If Laragon's auto-vhost already points at /public, this block is a no-op.
+    # Otherwise, send requests for any path through public/<path>.
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# Fallback when mod_rewrite isn't available: hide directory listings.
+Options -Indexes
